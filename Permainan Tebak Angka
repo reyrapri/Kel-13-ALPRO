@@ -1,0 +1,12 @@
+program PermainanTebakAngka;
+uses crt;
+
+var
+angkatebakan, angkarandom, skor: integer;
+level: string;
+f: text
+
+procedure simpanskor(skor: integer);
+begin
+assign(f, 'skor.txt');
+if not
