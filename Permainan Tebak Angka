@@ -1,5 +1,5 @@
 program PermainanTebakAngka;
-uses crt;
+uses crt, sysutils;
 
 var
 angkatebakan, angkarandom, skor: integer;
@@ -9,4 +9,22 @@ f: text
 procedure simpanskor(skor: integer);
 begin
 assign(f, 'skor.txt');
-if not
+if not fileexists('skor.txt') then rewrite(f)
+else 
+append(f);
+writeln(f, 'Skor:', skor);
+close(f);
+end;
+
+function batasatas(pilihan: integer; batas: integer): integer;
+begin
+case pilihan of
+1: batasatas := 10;
+2: batasatas := 50;
+else
+if batas >= 100 then
+batasatas := batas
+else
+batasatas := batasatas(pilihan, batas + 10);
+end;
+end;
