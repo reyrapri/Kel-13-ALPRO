@@ -32,38 +32,38 @@ end;
 end;
 
 begin
- clrscr;
- skor := 0;
- writeln('Selamat datang di Permainan Tebak Angka!');
- writeln('Pilih level kesulitan:');
- writeln('1.Mudah');
- writeln('2.Sedang');
- writeln('3.Sulit');
- write('Masukkan pilihan (1-3):');
- readln(pilihan);
-
+clrscr;
+skor := 0;
+writeln('Selamat datang di Permainan Tebak Angka!');
+writeln('Pilih level kesulitan:');
+writeln('1. Mudah');
+writeln('2. Sedang');
+writeln('3. Sulit');
+write('Masukkan pilihan (1-3): ');
+readln(pilihan);
 randomize;
 case pilihan of
-  1: angkaRandom := random(10) + 1;
-  2: angkaRandom := random(50) + 1;
-  3: angkaRandom := random(BatasAtas(pilihan,25)) + 1;
+1: angkaRandom := random(10) + 1;
+2: angkaRandom := random(50) + 1;
+3: angkaRandom := random(BatasAtas(pilihan, 25)) + 1;
 else
-  writeln('Pilihan tidak valid');
-  halt;
- end;
+writeln('Pilihan tidak valid');
+halt;
+end;
 
 repeat
- writeln('Masukkan tebakan Anda:');
- readln(angka Tebakan);
- if angkaTebakan < angkaRandom then
-  writeln('Terlalu kecil!')
+writeln('Masukkan tebakan Anda:');
+readln(angkaTebakan);
+if angkaTebakan < angkaRandom then
+writeln('Terlalu kecil!')
+else if angkaTebakan > angkaRandom then
+writeln('Terlalu besar!')
 else
-  writeln('Selamat, tebakan Anda benar!');
+writeln('Selamat, tebakan Anda benar!');
 skor := skor + 1;
-until angkaTebakan + angkaRandom;
-
+until angkaTebakan = angkaRandom;
 SimpanSkor(skor);
-writeln('Skor Anda: ',skor);
+writeln('Skor Anda: ', skor);
 writeln('Skor Anda telah disimpan dalam file skor.txt');
 readln;
 end.
