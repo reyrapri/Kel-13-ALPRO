@@ -2,30 +2,32 @@ program PermainanTebakAngka;
 uses crt, sysutils;
 
 var
-angkatebakan, angkarandom, skor: integer;
+angkaTebakan, angkaRandom, skor: integer;
+pilihan: integer;
 level: string;
-f: text
+f: text;
 
-procedure simpanskor(skor: integer);
+procedure SimpanSkor(skor: integer);
 begin
 assign(f, 'skor.txt');
-if not fileexists('skor.txt') then rewrite(f)
-else 
+if not FileExists('skor.txt') then
+rewrite(f)
+else
 append(f);
-writeln(f, 'Skor:', skor);
+writeln(f, 'Skor: ', skor);
 close(f);
 end;
 
-function batasatas(pilihan: integer; batas: integer): integer;
+function BatasAtas(pilihan: integer; batas: integer): integer;
 begin
 case pilihan of
-1: batasatas := 10;
-2: batasatas := 50;
+1: BatasAtas := 10;
+2: BatasAtas := 50;
 else
 if batas >= 100 then
-batasatas := batas
+BatasAtas := batas
 else
-batasatas := batasatas(pilihan, batas + 10);
+BatasAtas := BatasAtas(pilihan, batas + 10);
 end;
 end;
 
